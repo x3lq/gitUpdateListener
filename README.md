@@ -13,4 +13,4 @@ You have to setup the configuration in the config.properties file in order for t
 [x] add email notification <br>
 
 
-I am glad to help if any problems occur
+I am glad to help if any problems occurr
