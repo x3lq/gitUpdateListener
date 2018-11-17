@@ -1,36 +1,40 @@
 package de.x3lq;
 
+import de.x3lq.Notifier.EmailConfig;
+import de.x3lq.Notifier.Notifier;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.lib.BranchTrackingStatus;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 public class Main {
 
+	private static Properties config;
+
     public static void main(String[] args) {
 
-        if(args == null || args.length != 2 || args.length !=3 ) {
-            System.out.println("Param repositoryPath and branchToObserve needed");
-            return;
-        }
+		config = ConfigReader.readConfig();
 
-        String path = args[0];
+		if(config == null) {
+			return;
+		}
+
+        String path = config.getProperty("repositoryPath");
         File repoFile = new File(path);
 
-        String branchToWatch = args[1];
+        String branchToWatch = config.getProperty("branchName");
 
-        String scriptToExecute = null;
-        if(args.length == 3) {
-            scriptToExecute = args[2];
-        }
+        String scriptToExecute = config.getProperty("scriptPath");
+        if( !new File(scriptToExecute).exists() ) {
+        	scriptToExecute = null;
+		}
 
         if(repoFile.exists()) {
 
@@ -57,6 +61,8 @@ public class Main {
 
                                 process.waitFor();
                             }
+
+							Notifier.notifyAllEmail(createEmailConfig());
 
                             System.out.println("Done");
                         }
@@ -85,4 +91,18 @@ public class Main {
         }
         return counts;
     }
+
+    private static EmailConfig createEmailConfig() {
+    	boolean auth = Boolean.valueOf(config.getProperty("mail.smtp.auth"));
+    	boolean tls = Boolean.valueOf(config.getProperty("mail.smtp.tls.enable"));
+    	String host = config.getProperty("mail.smtp.host");
+    	int port = Integer.parseInt(config.getProperty("mail.smtp.port"));
+    	String user = config.getProperty("mail.user");
+    	String pw = config.getProperty("mail.pw");
+    	String text = config.getProperty("text");
+
+    	String[] mails = config.getProperty("recipiants").split(", ");
+
+    	return new EmailConfig(auth, tls, host, port, user, pw, text, mails);
+	}
 }

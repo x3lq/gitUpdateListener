@@ -3,10 +3,7 @@
 This program checks if a certain branch on git is behind and in case it is, it updates it. 
 After updating it can run a bash script
 
-run with following arguments: pathToGit branchName pathToScript
-
-pathToScript is optional
-
+You have to setup the configuration in the config.properties file in order for the program to run
 
 [x] setup Maven <br>
 [x] setup git with gitignore <br>
