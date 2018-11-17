@@ -10,5 +10,5 @@ You have to setup the configuration in the config.properties file in order for t
 [x] open Repo <br>
 [x] check for updates on branch <br>
 [x] execute bash script <br>
-[] add email notification <br>
+[x] add email notification <br>
 
