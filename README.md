@@ -5,6 +5,8 @@ After pulling it can run a bash script (copy files and restart server, whatever 
 
 In the end a specified list of emailaddresses get a notification about the update
 
+It runs by using your local ssh key, so pls make sure you provided your SSH key to (github, gitlab, ...)
+currently only the user key in home/usr/.ssh/.id_rsa.pub is used <br> 
 You have to setup a config file and provide its path as command line argument like so:
 
 ```
