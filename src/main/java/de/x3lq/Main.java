@@ -20,9 +20,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-		config = ConfigReader.readConfig();
+    	if(args == null || args.length != 1) {
+			System.out.println("No path to config given");
+			return;
+		}
+
+		config = ConfigReader.readConfig(args[0]);
 
 		if(config == null) {
+			System.out.println("Error while loading config file");
 			return;
 		}
 
@@ -101,7 +107,7 @@ public class Main {
     	String pw = config.getProperty("mail.pw");
     	String text = config.getProperty("text");
 
-    	String[] mails = config.getProperty("recipiants").split(", ");
+    	String[] mails = config.getProperty("recipients").split(", ");
 
     	return new EmailConfig(auth, tls, host, port, user, pw, text, mails);
 	}

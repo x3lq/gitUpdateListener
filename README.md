@@ -5,7 +5,17 @@ After pulling it can run a bash script (copy files and restart server, whatever 
 
 In the end a specified list of emailaddresses get a notification about the update
 
-You have to setup the configuration in the config.properties file in order for the program to run, simply copy the example properties and rename them.
+You have to setup a config file and provide its path as command line argument like so:
+
+```
+java -jar executable.jar PATH-TO-CONFIG
+```
+
+You can see an example of the config in the 
+
+```
+src/main/resources/config_example.properties
+```
 
 [x] setup Maven <br>
 [x] setup git with gitignore <br>
