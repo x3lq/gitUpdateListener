@@ -1,3 +1,5 @@
+package de.x3lq;
+
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.RefNotFoundException;
 import org.eclipse.jgit.lib.BranchTrackingStatus;
@@ -14,8 +16,10 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        if(args.length != 2 || args.length !=3 ) {
-            System.out.println("Param repPath and branchToObserve needed");
+
+        if(args == null || args.length != 2 || args.length !=3 ) {
+            System.out.println("Param repositoryPath and branchToObserve needed");
+            return;
         }
 
         String path = args[0];
