@@ -13,4 +13,5 @@ pathToScript is optional
 [x] open Repo <br>
 [x] check for updates on branch <br>
 [x] execute bash script <br>
+[] add email notification <br>
 
