@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gitUpdateListener.iml" filepath="$PROJECT_DIR$/.idea/gitUpdateListener.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gitUpdateListener.iml" filepath="$PROJECT_DIR$/gitUpdateListener.iml" />
     </modules>
   </component>
 </project>

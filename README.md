@@ -5,4 +5,10 @@ After updating it runs a bash script
 
 run with following arguments: pathToGit branchName pathToScript
 
-the last one is optional
+
+[x] setup Maven <br>
+[x] setup git with gitignore <br>
+[x] open Repo <br>
+[x] check for updates on branch <br>
+[x] execute bash script <br>
+
